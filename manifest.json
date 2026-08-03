@@ -3,7 +3,7 @@
   "short_name": "Voddic Quiz",
   "description": "Compete in the Voddic Quiz Contest and win up to \u20a65,000,000.",
   "id": "/",
-  "start_url": "/https://quiz.voddic.com.ng/",
+  "start_url": "/app/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
