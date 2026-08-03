@@ -2,33 +2,261 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Opening Voddic Quiz…</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Voddic Quiz Contest — Win ₦5,000,000</title>
+<meta name="description" content="Install Voddic Quiz and get ready to compete for the ₦5,000,000 Grand Prize.">
 <meta name="theme-color" content="#0F172A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Voddic Quiz">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  html,body{ height:100%; margin:0; background:#0F172A; }
-  .wrap{
-    height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    font-family:-apple-system, Inter, sans-serif; color:#fff;
+  :root{
+    --navy:#0F172A;
+    --navy-2:#0B1220;
+    --gold:#FACC15;
+    --gold-2:#F59E0B;
+    --purple:#7C3AED;
+    --ink-70: rgba(255,255,255,.72);
+    --ink-50: rgba(255,255,255,.5);
   }
-  .spinner{
-    width:36px; height:36px; border-radius:50%;
-    border:3px solid rgba(255,255,255,.15); border-top-color:#FACC15;
-    animation:spin .8s linear infinite; margin-bottom:14px;
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--navy);
+    color:#fff;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
   }
-  @keyframes spin{ to{ transform:rotate(360deg); } }
-  p{ font-size:.85rem; color:rgba(255,255,255,.6); }
+  h1,.display{ font-family:'Sora', sans-serif; }
+  ::selection{ background:var(--gold); color:var(--navy); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; }
+  }
+
+  .stage{
+    position:relative;
+    height:100svh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:32px 24px;
+    background:
+      radial-gradient(60% 45% at 20% 10%, rgba(124,58,237,.35), transparent 70%),
+      radial-gradient(55% 45% at 85% 6%, rgba(250,204,21,.16), transparent 65%),
+      radial-gradient(90% 60% at 50% 100%, rgba(124,58,237,.22), transparent 60%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+  }
+
+  .field-icons{ position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+  .fi{
+    position:absolute; font-size:1.4rem; opacity:.35;
+    filter:drop-shadow(0 0 10px rgba(255,255,255,.12));
+    animation: floaty 6s ease-in-out infinite;
+  }
+  @keyframes floaty{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-14px) rotate(6deg); }
+  }
+
+  .content{ position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; max-width:380px; }
+
+  .logo{
+    width:132px; height:132px; border-radius:30px; overflow:hidden;
+    box-shadow:0 20px 50px -16px rgba(0,0,0,.7), 0 0 60px -10px rgba(250,204,21,.35);
+    animation: fadeUp .7s ease both, floatLogo 5s ease-in-out infinite 1s;
+  }
+  .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  @keyframes floatLogo{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-8px); }
+  }
+
+  h1{
+    margin-top:22px; font-size:1.9rem; line-height:1.18; font-weight:800; letter-spacing:-.5px;
+    animation: fadeUp .8s .08s ease both;
+  }
+  h1 .amount{
+    display:block;
+    background:linear-gradient(100deg, #FDE68A, var(--gold) 35%, var(--gold-2) 65%, #FDE68A);
+    background-size:220% auto;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation: shine 3.5s linear infinite;
+  }
+  @keyframes shine{ to{ background-position:-220% center; } }
+
+  p.sub{
+    margin-top:12px; font-size:.94rem; line-height:1.55; color:var(--ink-70);
+    animation: fadeUp .8s .14s ease both;
+  }
+
+  .cta{ margin-top:30px; display:flex; flex-direction:column; align-items:center; gap:10px; animation: fadeUp .9s .2s ease both; width:100%; }
+  .btn-download{
+    position:relative; overflow:hidden; width:100%;
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-family:'Sora', sans-serif; font-weight:700; font-size:1rem;
+    color:var(--navy); background:linear-gradient(100deg, #FDE68A, var(--gold), var(--gold-2));
+    padding:17px 30px; border-radius:16px; border:none; cursor:pointer;
+    box-shadow:0 10px 30px -8px rgba(250,204,21,.55), 0 0 0 1px rgba(255,255,255,.15) inset;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-download:hover{ transform:translateY(-2px); box-shadow:0 16px 36px -8px rgba(250,204,21,.7), 0 0 0 1px rgba(255,255,255,.2) inset; }
+  .btn-download:active{ transform:translateY(0); }
+  .btn-download:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
+  .btn-download .sheen{
+    position:absolute; top:0; left:-60%; width:40%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,.65), transparent);
+    transform:skewX(-20deg);
+    animation: sheen 3.2s ease-in-out infinite;
+  }
+  @keyframes sheen{ 0%{ left:-60%; } 45%,100%{ left:130%; } }
+  .cta-note{ font-size:.72rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-50); font-weight:700; }
+
+  footer{
+    position:absolute; bottom:14px; left:0; right:0; z-index:2;
+    text-align:center; font-size:.68rem; color:var(--ink-50);
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform:translateY(16px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  #confetti-canvas{ position:fixed; inset:0; z-index:50; pointer-events:none; }
+
+  @media (min-width:768px){
+    .content{ max-width:440px; }
+    .logo{ width:160px; height:160px; border-radius:36px; }
+    h1{ font-size:2.5rem; }
+    p.sub{ font-size:1.05rem; }
+  }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="spinner"></div>
-    <p>Opening Voddic Quiz…</p>
+
+<canvas id="confetti-canvas"></canvas>
+
+<main class="stage">
+  <div class="field-icons" aria-hidden="true">
+    <span class="fi" style="top:8%; left:10%; animation-delay:.2s;">📐</span>
+    <span class="fi" style="top:14%; left:80%; animation-delay:1.1s;">⚽</span>
+    <span class="fi" style="top:78%; left:8%; animation-delay:1.6s;">🎬</span>
+    <span class="fi" style="top:82%; left:82%; animation-delay:.7s;">🔬</span>
+    <span class="fi" style="top:4%; left:46%; animation-delay:2.2s;">💻</span>
   </div>
-  <script>
-    // This is the PWA's start_url. It lives on the same origin as the
-    // manifest (required by the spec), then hands off to the real app.
-    location.replace('https://quiz.voddic.com.ng/');
-  </script>
+
+  <div class="content">
+    <div class="logo">
+      <img src="voddic-logo.png" alt="Voddic Quiz Contest logo">
+    </div>
+
+    <h1>Win <span class="amount">₦5,000,000</span></h1>
+    <p class="sub">Install the app now and be ready when the Voddic Quiz Contest opens.</p>
+
+    <div class="cta">
+      <button class="btn-download" id="installBtn"><span class="sheen"></span> 📲 Download App</button>
+      <span class="cta-note">Fast • Secure • Free</span>
+    </div>
+  </div>
+
+  <footer>© 2026 Voddic Quiz Contest</footer>
+</main>
+
+<script>
+  // ---------------- Service worker registration ----------------
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', ()=>{
+      navigator.serviceWorker.register('service-worker.js').catch(console.error);
+    });
+  }
+
+  // ---------------- Install button ----------------
+  let deferredPrompt;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+
+  window.addEventListener('beforeinstallprompt', (e)=>{
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+  window.addEventListener('appinstalled', ()=>{
+    deferredPrompt = null;
+  });
+
+  function handleInstall(){
+    if(deferredPrompt){
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.finally(()=>{ deferredPrompt = null; });
+      return;
+    }
+    if(isIOS){
+      alert('To install: tap the Share icon, then "Add to Home Screen".');
+      return;
+    }
+    alert('Your browser doesn\'t support one-tap install here. Open this page in Chrome or Edge on your phone to install.');
+  }
+  document.getElementById('installBtn').addEventListener('click', handleInstall);
+
+  // ---------------- Confetti (brief burst on load) ----------------
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const colors = ['#FACC15','#7C3AED','#FFFFFF','#F59E0B'];
+  let particles = [];
+  function spawn(){
+    particles = [];
+    for(let i=0;i<60;i++){
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: -20 - Math.random()*canvas.height*0.4,
+        r: 3 + Math.random()*4,
+        c: colors[Math.floor(Math.random()*colors.length)],
+        vy: 2 + Math.random()*3,
+        vx: -1 + Math.random()*2,
+        rot: Math.random()*360,
+        vr: -6 + Math.random()*12
+      });
+    }
+  }
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let start = performance.now();
+  function loop(t){
+    if(prefersReduced) return;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle = p.c;
+      ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6);
+      ctx.restore();
+    });
+    if(t - start < 2800){ requestAnimationFrame(loop); }
+    else{ ctx.clearRect(0,0,canvas.width,canvas.height); }
+  }
+  if(!prefersReduced){
+    spawn();
+    requestAnimationFrame(loop);
+  }
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+        

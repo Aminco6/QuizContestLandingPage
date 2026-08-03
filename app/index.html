@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opening Voddic Quiz…</title>
+<meta name="theme-color" content="#0F172A">
+<style>
+  html,body{ height:100%; margin:0; background:#0F172A; }
+  .wrap{
+    height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-family:-apple-system, Inter, sans-serif; color:#fff;
+  }
+  .spinner{
+    width:36px; height:36px; border-radius:50%;
+    border:3px solid rgba(255,255,255,.15); border-top-color:#FACC15;
+    animation:spin .8s linear infinite; margin-bottom:14px;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  p{ font-size:.85rem; color:rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="spinner"></div>
+    <p>Opening Voddic Quiz…</p>
+  </div>
+  <script>
+    // This is the PWA's start_url. It lives on the same origin as the
+    // manifest (required by the spec), then hands off to the real app.
+    location.replace('https://quiz.voddic.com.ng/');
+  </script>
+</body>
+</html>
