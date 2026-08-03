@@ -1,9 +1,10 @@
-const CACHE_NAME = 'quizchamp-install-v1';
+const CACHE_NAME = 'voddic-quiz-install-v2';
 const APP_SHELL = [
   './',
   './index.html',
   './manifest.json',
-  './voddic.png'
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 // Cache the install-page shell so the promo page still works offline.
@@ -29,7 +30,7 @@ self.addEventListener('activate', (event) => {
 });
 
 // Cache-first for the shell, falling back to network for everything else
-// (e.g. the real app at https://example.com/app/ once it's launched).
+// (e.g. the real app once it's launched at its own start_url).
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
